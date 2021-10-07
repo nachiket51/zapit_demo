@@ -1,3 +1,8 @@
+/// App String texts
+
+///
+/// App System
+///
 const String APP_NAME = 'Zapit';
 
 ///

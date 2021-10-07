@@ -2,6 +2,7 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:sizer/sizer.dart';
 
+/// APP: global flutter text widget
 class TextWidget extends StatelessWidget {
   final String text;
   final TextStyle? textStyle;

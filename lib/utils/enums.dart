@@ -1,3 +1,5 @@
+/// App enums
+
 ///
 /// Page Navigation Enum ---
 ///

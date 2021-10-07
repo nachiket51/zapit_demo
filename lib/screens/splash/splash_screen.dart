@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_platform_widgets/flutter_platform_widgets.dart';
+import 'package:sizer/sizer.dart';
 import 'package:zapit_demo/services/route_services.dart';
 import 'package:zapit_demo/utils/enums.dart';
 
@@ -19,6 +20,8 @@ class _SplashScreenState extends State<SplashScreen> {
     super.initState();
     Timer(
       const Duration(seconds: 3),
+
+      /// currency list navigation
       () => AppRoutes.navigatePage(
         pageRoute: AppRoutes.CURRENCIES_SCREEN_ROUTE,
         pageNav: PageNav.offAll,
@@ -29,8 +32,10 @@ class _SplashScreenState extends State<SplashScreen> {
   @override
   Widget build(BuildContext context) {
     return PlatformScaffold(
-      body: const Center(
-        child: FlutterLogo(),
+      body: Center(
+        child: FlutterLogo(
+          size: 50.h,
+        ),
       ),
     );
   }

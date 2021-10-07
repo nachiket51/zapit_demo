@@ -12,6 +12,7 @@ class ZapitApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    /// IOS: PLATFORM SET-UP
     return GetPlatform.isIOS
         ? Sizer(builder: (context, orientation, deviceType) {
             return GetMaterialApp(
@@ -26,6 +27,8 @@ class ZapitApp extends StatelessWidget {
               ],
             );
           })
+
+        /// ANDROID: PLATFORM SET-UP
         : Sizer(builder: (context, orientation, deviceType) {
             return GetCupertinoApp(
               navigatorKey: appNavigatorKey,

@@ -1,5 +1,8 @@
 import 'dart:convert';
+import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:path_provider/path_provider.dart';
+import 'package:zapit_demo/services/storage_services.dart';
 import 'package:zapit_demo/utils/events_messager/log_message.dart';
 import 'package:zapit_demo/utils/keys.dart';
 
@@ -29,7 +32,7 @@ class HttpServices {
     params ??= {};
     params.removeWhere((key, value) => value == null);
     Uri uri = buildUrl(command, queryParams: params);
-    return http.get(uri, headers: await buildHeaders()).then((value) {
+    return http.get(uri, headers: await buildHeaders()).then((value) async {
       normalLog(
           message: 'Service GET <= $command? body value => ${value.body} \n');
       return value;
@@ -95,4 +98,26 @@ class HttpServices {
       throw error;
     });
   }
+
+/*/// Cache: store data offline
+  static storeCache(http.Response response) async {
+    try {
+      var tempDir = await getTemporaryDirectory();
+      await deleteExistingCatch(cacheDir: tempDir);
+      normalLog(message: 'Storing catch data...');
+      File file = File(tempDir.path + "/" + PrimaryKeys.CACHE_DATA_PATH);
+      file.writeAsString(response.body, flush: true, mode: FileMode.write);
+    } catch (e) {
+      normalLog(message: e.toString());
+    }
+  }
+
+  /// Cache: delete cache Data
+  static deleteExistingCatch({var cacheDir}) async {
+    if (await File(cacheDir.path + "/" + PrimaryKeys.CACHE_DATA_PATH)
+        .exists()) {
+      normalLog(message: 'Delete data from cache...');
+      cacheDir.delete(recursive: true);
+    }
+  }*/
 }
